@@ -92,10 +92,37 @@
                                     maxlength="8" style="width: 210px;" onfocusout="formataCEP()">
                                 <label for="" id="">CEP</label>
                             </div>
-                            <div class="div-input form-floating mb-3 col-5" style="display: inline-block;">
-                                <input class="form-control" type="text" name="uf" id="uf" placeholder="MG"
-                                    maxlength="2">
-                                <label for="" id="">UF</label>
+                            <div class="div-input mb-3 col-5" style="display: inline-block;">
+                                <select class="form-select" aria-label="Default select example" id="uf">
+                                    <option value="" selected>UF</option>
+                                    <option value="AC">Acre</option>
+                                    <option value="AL">Alagoas</option>
+                                    <option value="AP">Amapá</option>
+                                    <option value="AM">Amazonas</option>
+                                    <option value="BA">Bahia</option>
+                                    <option value="CE">Ceará</option>
+                                    <option value="DF">Distrito Federal</option>
+                                    <option value="ES">Espirito Santo</option>
+                                    <option value="GO">Goiás</option>
+                                    <option value="MA">Maranhão</option>
+                                    <option value="MS">Mato Grosso do Sul</option>
+                                    <option value="MT">Mato Grosso</option>
+                                    <option value="MG">Minas Gerais</option>
+                                    <option value="PA">Pará</option>
+                                    <option value="PB">Paraíba</option>
+                                    <option value="PR">Paraná</option>
+                                    <option value="PE">Pernambuco</option>
+                                    <option value="PI">Piauí</option>
+                                    <option value="RJ">Rio de Janeiro</option>
+                                    <option value="RN">Rio Grande do Norte</option>
+                                    <option value="RS">Rio Grande do Sul</option>
+                                    <option value="RO">Rondônia</option>
+                                    <option value="RR">Roraima</option>
+                                    <option value="SC">Santa Catarina</option>
+                                    <option value="SP">São Paulo</option>
+                                    <option value="SE">Sergipe</option>
+                                    <option value="TO">Tocantins</option>
+                                </select>
                             </div>
                         </div>
                         <div class="div-input form-floating mb-3">
@@ -141,7 +168,7 @@
                         <div class="div-input justify-content-center">
                             <div class="form-floating mb-3 col-12" style="display: inline-block;">
                                 <input class="form-control" type="text" name="" id="email"
-                                    placeholder="exemplo@exemplo.com">
+                                    placeholder="exemplo@exemplo.com" onfocusout="validateEmail()">
                                 <label for="" id="">E-mail<span class="obg">*</span></label>
                             </div>
                         </div>
@@ -197,9 +224,11 @@
         function alterarCpf_cnpj(tipo) {
             if (tipo == 1) {
                 document.getElementById('cpf_cnpj').setAttribute('maxlength', '11')
+                document.getElementById('cpf_cnpj').value = ''
             }
             else {
                 document.getElementById('cpf_cnpj').setAttribute('maxlength', '14')
+                document.getElementById('cpf_cnpj').value = ''
             }
             if (document.getElementById('cpf_cnpj').hasAttributes('readonly')) {
                 document.getElementById('cpf_cnpj').removeAttribute('readonly')
@@ -235,14 +264,52 @@
 
         function formataCEP() {
             let valor = document.getElementById('cep').value
-            valor = valor.replace(/(\d{5})(\d{3})/, "$1-$2")
-            document.getElementById('cep').value = valor;
+            if (valor.length == 8) {
+                viaCep(valor);
+                valor = valor.replace(/(\d{5})(\d{3})/, "$1-$2")
+                document.getElementById('cep').value = valor;
+            }
         }
 
         function formataRG() {
+
             let valor = document.getElementById('rg').value
-            valor = valor.replace(/(\d{2})(\d{3})(\d{3})(\d{1})/, "$1.$2.$3-$4")
-            document.getElementById('rg').value = valor;
+            if (valor.length == 9) {
+                valor = valor.replace(/(\d{2})(\d{3})(\d{3})(\d{1})/, "$1.$2.$3-$4")
+                document.getElementById('rg').value = valor;
+            }
+        }
+
+        function validateEmail() {
+            let email = document.getElementById('email').value;
+            var re = /\S+@\S+\.\S+/;
+            let teste = re.test(email);
+            if (teste) {
+                document.getElementById('email').style.border = '';
+            }
+            else {
+                document.getElementById('email').style.border = 'red solid 1px';
+            }
+        }
+
+        function obterDados(){
+            let nome = document.getElementById('associado').value;
+            let cpf_cnpj = document.getElementById('cpf_cnpj').value;
+            let cep = document.getElementById('cep').value;
+            let endereco = document.getElementById('endereco').value;
+            let bairro = document.getElementById('bairro').value;
+            
+        }
+
+        function viaCep(cep){
+            fetch(`https://viacep.com.br/ws/${cep}/json`)
+                    .then(response => {
+                        return response.json()
+                            .then(data => data);
+                            console.log(data)
+                        document.getElementById('cidade').value = data.cidade;
+                        }).then((data) => {
+                    }).catch((err) => { });
         }
 
     </script>
