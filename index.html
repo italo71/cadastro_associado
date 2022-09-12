@@ -51,6 +51,10 @@
         .tel {
             margin-right: 7px;
         }
+
+        .obg {
+            color: red !important;
+        }
     </style>
 </head>
 
@@ -64,26 +68,26 @@
                         <div class="div-input form-floating">
                             <input class="form-control" type="text" id="associado" placeholder="Joaquin Pereira"
                                 style="width: 400px;">
-                            <label for="">Nome do Associado</label>
+                            <label for="">Nome do Associado<span class="obg">*</span></label>
                         </div>
                         <div class="div-input">
-                            <div style="border: solid 0.5px lightgray; padding: 5px; " class="col-4">
-                                <label for="">Tipo</label>
-                                <input class="" type="radio" name="cpf-cnpj" id="cpf" class="radio"
-                                    onclick="alterarCpf_cnpj(1)"><span style="font-size: 75%;">CPF</span> <br>
-                                <input class="" type="radio" name="cpf-cnpj" id="cnpj" class="radio"
+                            <div class="col-4">
+                                <label for="" style="margin-left: 12px;">Tipo <span class="obg">*</span></label>
+                                <input class="" type="radio" name="cpf-cnpj" id="cpf" class="radio" style="margin-left: 10px; margin-right: 5px;"
+                                    onclick="alterarCpf_cnpj(1)"><span style="font-size: 75%;">CPF</span>
+                                <input class="" type="radio" name="cpf-cnpj" id="cnpj" class="radio" style="margin-left: 10px; margin-right: 5px;"
                                     onclick="alterarCpf_cnpj(2)"><span style="font-size: 75%;">CNPJ</span>
                             </div>
                             <div class="form-floating m-t-10">
                                 <input class="form-control" type="text" id="cpf_cnpj" placeholder="123.456.789-99"
-                                    maxlength="">
-                                <label for="">CPF/CNPJ</label>
+                                    maxlength="" onfocusout="formatar()">
+                                <label for="">CPF/CNPJ<span class="obg">*</span></label>
                             </div>
                         </div>
                         <div class="div-input form-floating">
                             <input class="form-control" type="text" name="cep" id="cep" placeholder="32604-158"
                                 maxlength="8">
-                            <label for="" id="">CEP</label>
+                            <label for="" id="">CEP<span class="obg">*</span></label>
                         </div>
                         <div class="div-input form-floating">
                             <input class="form-control" type="text" name="Endereco" id="endereco"
@@ -114,7 +118,7 @@
                                 <div class="form-floating tel" style="display: inline-block;">
                                     <input class="form-control" type="text" name="" id="sms" class=""
                                         placeholder="(31) 9 9999-9999" style="width: 130px;">
-                                    <label for="" id="">Telefone 1</label>
+                                    <label for="" id="">Telefone 1<span class="obg">*</span></label>
                                 </div>
                                 <div class="form-floating tel" style="display: inline-block;">
                                     <input class="form-control" type="text" name="" id="tel2" class=""
@@ -132,19 +136,44 @@
                             <div class="form-floating col-12" style="display: inline-block;">
                                 <input class="form-control" type="text" name="" id="email" class="" style=""
                                     placeholder="exemplo@exemplo.com">
-                                <label for="" id="">E-mail</label>
+                                <label for="" id="">E-mail<span class="obg">*</span></label>
                             </div>
                         </div>
-                        <div>
-                            <div class="div-input form-floating col-4">
+                        <div class="col-12">
+                            <div class="div-input form-floating col-4" style="display: inline-block;">
                                 <input class="form-control" type="date" name="Endereco" id="endereco"
                                     placeholder="00/00/0000">
                                 <label for="" id="" class="" style="width: 400px;">Data de Nascimento</label>
                             </div>
-                            <div style="border: solid 0.5px lightgray; padding: 5px; " class="col-4">
-                                <label for="">Sexo</label>
-                                <input class="" type="radio" name="sexo" id="masc" class="radio"><span style="font-size: 75%;">Masculino</span> <br>
-                                <input class="" type="radio" name="sexo" id="fem" class="radio"><span style="font-size: 75%;">Feminino</span>
+                            <div style="display: inline-block;"
+                                class="col-4">
+                                <label for="" style="margin-left: 5px;">Sexo<span class="obg">*</span></label>
+                                <input class="" type="radio" name="sexo" id="masc" class="radio" style="margin-left: 5px; margin-right: 3.5px;"><span
+                                    style="font-size: 75%;">Masculino</span>
+                                <input class="" type="radio" name="sexo" id="fem" class="radio" style="margin-left: 5px; margin-right: 3.5px;"><span
+                                    style="font-size: 75%;">Feminino</span>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="div-input form-floating col-4" style="display: inline-block;">
+                                <input class="form-control" type="text" id="cnh" placeholder="36902051223"
+                                    style="width: 150px;">
+                                <label for="">CNH</label>
+                            </div>
+                            <div class="div-input form-floating col-5" style="display: inline-block;">
+                                <input class="form-control" type="date" id="data_cnh" placeholder="00/00/0000">
+                                <label for="">Data Validade CNH</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="div-input form-floating col-4" style="display: inline-block;">
+                                <input class="form-control" type="text" id="rg" placeholder="28.131.342-8"
+                                    style="width: 150px;" onfocusout="formataRG()">
+                                <label for="">RG</label>
+                            </div>
+                            <div class="div-input form-floating col-6" style="display: inline-block;">
+                                <input class="form-control" type="text" id="usuario" placeholder="usuário">
+                                <label for="">Usuário</label>
                             </div>
                         </div>
                     </div>
@@ -170,6 +199,38 @@
             }
         }
 
+        function formatar() {
+            let valor = document.getElementById('cpf_cnpj').value;
+            if (valor.length == 11) {
+                formataCPF();
+                document.getElementById('cpf_cnpj').style.border = ''
+            }
+            else if (valor.length == 14) {
+                formataCNPJ();
+                document.getElementById('cpf_cnpj').style.border = ''
+            }
+            else {
+                document.getElementById('cpf_cnpj').style.border = 'red solid 1px'
+            }
+        }
+
+        function formataCPF() {
+            let valor = document.getElementById('cpf_cnpj').value
+            valor = valor.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4")
+            document.getElementById('cpf_cnpj').value = valor;
+        }
+
+        function formataCNPJ() {
+            let valor = document.getElementById('cpf_cnpj').value
+            valor = valor.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, "$1.$2.$3\/$4-$5")
+            document.getElementById('cpf_cnpj').value = valor;
+        }
+
+        function formataRG() {
+            let valor = document.getElementById('rg').value
+            valor = valor.replace(/(\d{2})(\d{3})(\d{3})(\d{1})/, "$1.$2.$3-$4")
+            document.getElementById('rg').value = valor;
+        }
 
     </script>
 
