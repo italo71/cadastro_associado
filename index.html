@@ -65,7 +65,7 @@
             <div class="card col-10">
                 <div class="row">
                     <div id="left" class="col-6">
-                        <div class="div-input form-floating">
+                        <div class="div-input form-floating mb-3">
                             <input class="form-control" type="text" id="associado" placeholder="Joaquin Pereira"
                                 style="width: 400px;">
                             <label for="">Nome do Associado<span class="obg">*</span></label>
@@ -73,105 +73,112 @@
                         <div class="div-input">
                             <div class="col-4">
                                 <label for="" style="margin-left: 12px;">Tipo <span class="obg">*</span></label>
-                                <input class="" type="radio" name="cpf-cnpj" id="cpf" class="radio" style="margin-left: 10px; margin-right: 5px;"
-                                    onclick="alterarCpf_cnpj(1)"><span style="font-size: 75%;">CPF</span>
-                                <input class="" type="radio" name="cpf-cnpj" id="cnpj" class="radio" style="margin-left: 10px; margin-right: 5px;"
-                                    onclick="alterarCpf_cnpj(2)"><span style="font-size: 75%;">CNPJ</span>
+                                <input type="radio" name="cpf-cnpj" id="cpf" class="radio"
+                                    style="margin-left: 10px; margin-right: 5px;" onclick="alterarCpf_cnpj(1)"><span
+                                    style="font-size: 75%;">CPF</span>
+                                <input type="radio" name="cpf-cnpj" id="cnpj" class="radio"
+                                    style="margin-left: 10px; margin-right: 5px;" onclick="alterarCpf_cnpj(2)"><span
+                                    style="font-size: 75%;">CNPJ</span>
                             </div>
-                            <div class="form-floating m-t-10">
+                            <div class="form-floating mb-3 m-t-10">
                                 <input class="form-control" type="text" id="cpf_cnpj" placeholder="123.456.789-99"
                                     maxlength="" onfocusout="formatar()">
                                 <label for="">CPF/CNPJ<span class="obg">*</span></label>
                             </div>
                         </div>
-                        <div class="div-input form-floating">
-                            <input class="form-control" type="text" name="cep" id="cep" placeholder="32604-158"
-                                maxlength="8">
-                            <label for="" id="">CEP<span class="obg">*</span></label>
+                        <div class="col-12">
+                            <div class="div-input form-floating mb-3 col-5" style="display: inline-block;">
+                                <input class="form-control" type="text" name="cep" id="cep" placeholder="32604-158"
+                                    maxlength="8" style="width: 210px;" onfocusout="formataCEP()">
+                                <label for="" id="">CEP</label>
+                            </div>
+                            <div class="div-input form-floating mb-3 col-5" style="display: inline-block;">
+                                <input class="form-control" type="text" name="uf" id="uf" placeholder="MG"
+                                    maxlength="2">
+                                <label for="" id="">UF</label>
+                            </div>
                         </div>
-                        <div class="div-input form-floating">
+                        <div class="div-input form-floating mb-3">
                             <input class="form-control" type="text" name="Endereco" id="endereco"
                                 placeholder="Rua José da Conceição">
-                            <label for="" id="" class="" style="width: 400px;">Endereço</label>
+                            <label for="" id="" style="width: 400px;">Endereço</label>
                         </div>
-                        <div class="div-input form-floating col-12">
-                            <div class="col-5 form-floating" style="display: inline-block;">
-                                <input class="form-control" type="text" name="bairro" id="bairro" placeholder="Angola"
-                                    class="" style="">
+                        <div class="div-input form-floating mb-3 col-12">
+                            <div class="col-5 form-floating mb-3" style="display: inline-block;">
+                                <input class="form-control" type="text" name="bairro" id="bairro" placeholder="Angola">
                                 <label for="" id="">Bairro</label>
                             </div>
-                            <div class="col-5 form-floating" style="display: inline-block;">
-                                <input class="form-control" type="text" name="Cidade" id="cidade" placeholder="Betim"
-                                    class="" style="">
+                            <div class="col-5 form-floating mb-3" style="display: inline-block;">
+                                <input class="form-control" type="text" name="Cidade" id="cidade" placeholder="Betim">
                                 <label for="" id="">Cidade</label>
                             </div>
                         </div>
-                        <div class="div-input form-floating">
-                            <input class="form-control" type="text" name="" id="associacao" readonly class="" style=""
-                                value="associação">
+                        <div class="div-input form-floating mb-3">
+                            <input class="form-control" type="text" name="" id="associacao" readonly value="associação">
                             <label for="" id="">Empresa</label>
                         </div>
                     </div>
                     <div id="right" class="col-6">
                         <div class="div-input">
                             <div class="col-12">
-                                <div class="form-floating tel" style="display: inline-block;">
-                                    <input class="form-control" type="text" name="" id="sms" class=""
+                                <div class="form-floating mb-3 tel" style="display: inline-block;">
+                                    <input class="form-control" type="text" name="" id="sms"
                                         placeholder="(31) 9 9999-9999" style="width: 130px;">
                                     <label for="" id="">Telefone 1<span class="obg">*</span></label>
                                 </div>
-                                <div class="form-floating tel" style="display: inline-block;">
-                                    <input class="form-control" type="text" name="" id="tel2" class=""
+                                <div class="form-floating mb-3 tel" style="display: inline-block;">
+                                    <input class="form-control" type="text" name="" id="tel2"
                                         placeholder="(31) 9 9999-9999" style="width: 130px;">
                                     <label for="" id="">Telefone 2</label>
                                 </div>
-                                <div class="form-floating tel" style="display: inline-block;">
-                                    <input class="form-control" type="text" name="" id="tel3" class=""
+                                <div class="form-floating mb-3 tel" style="display: inline-block;">
+                                    <input class="form-control" type="text" name="" id="tel3"
                                         placeholder="(31) 9 9999-9999" style="width: 130px;">
                                     <label for="" id="">Telefone 3</label>
                                 </div>
                             </div>
                         </div>
                         <div class="div-input justify-content-center">
-                            <div class="form-floating col-12" style="display: inline-block;">
-                                <input class="form-control" type="text" name="" id="email" class="" style=""
+                            <div class="form-floating mb-3 col-12" style="display: inline-block;">
+                                <input class="form-control" type="text" name="" id="email"
                                     placeholder="exemplo@exemplo.com">
                                 <label for="" id="">E-mail<span class="obg">*</span></label>
                             </div>
                         </div>
                         <div class="col-12">
-                            <div class="div-input form-floating col-4" style="display: inline-block;">
+                            <div class="div-input form-floating mb-3 col-4" style="display: inline-block;">
                                 <input class="form-control" type="date" name="Endereco" id="endereco"
                                     placeholder="00/00/0000">
-                                <label for="" id="" class="" style="width: 400px;">Data de Nascimento</label>
+                                <label for="" id="" style="width: 400px;">Data de Nascimento</label>
                             </div>
-                            <div style="display: inline-block;"
-                                class="col-4">
+                            <div style="display: inline-block;" class="col-4">
                                 <label for="" style="margin-left: 5px;">Sexo<span class="obg">*</span></label>
-                                <input class="" type="radio" name="sexo" id="masc" class="radio" style="margin-left: 5px; margin-right: 3.5px;"><span
+                                <input type="radio" name="sexo" id="masc" class="radio"
+                                    style="margin-left: 5px; margin-right: 3.5px;"><span
                                     style="font-size: 75%;">Masculino</span>
-                                <input class="" type="radio" name="sexo" id="fem" class="radio" style="margin-left: 5px; margin-right: 3.5px;"><span
+                                <input type="radio" name="sexo" id="fem" class="radio"
+                                    style="margin-left: 5px; margin-right: 3.5px;"><span
                                     style="font-size: 75%;">Feminino</span>
                             </div>
                         </div>
                         <div class="col-12">
-                            <div class="div-input form-floating col-4" style="display: inline-block;">
+                            <div class="div-input form-floating mb-3 col-4" style="display: inline-block;">
                                 <input class="form-control" type="text" id="cnh" placeholder="36902051223"
                                     style="width: 150px;">
                                 <label for="">CNH</label>
                             </div>
-                            <div class="div-input form-floating col-5" style="display: inline-block;">
+                            <div class="div-input form-floating mb-3 col-5" style="display: inline-block;">
                                 <input class="form-control" type="date" id="data_cnh" placeholder="00/00/0000">
                                 <label for="">Data Validade CNH</label>
                             </div>
                         </div>
                         <div class="col-12">
-                            <div class="div-input form-floating col-4" style="display: inline-block;">
+                            <div class="div-input form-floating mb-3 col-4" style="display: inline-block;">
                                 <input class="form-control" type="text" id="rg" placeholder="28.131.342-8"
                                     style="width: 150px;" onfocusout="formataRG()">
                                 <label for="">RG</label>
                             </div>
-                            <div class="div-input form-floating col-6" style="display: inline-block;">
+                            <div class="div-input form-floating mb-3 col-6" style="display: inline-block;">
                                 <input class="form-control" type="text" id="usuario" placeholder="usuário">
                                 <label for="">Usuário</label>
                             </div>
@@ -224,6 +231,12 @@
             let valor = document.getElementById('cpf_cnpj').value
             valor = valor.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, "$1.$2.$3\/$4-$5")
             document.getElementById('cpf_cnpj').value = valor;
+        }
+
+        function formataCEP() {
+            let valor = document.getElementById('cep').value
+            valor = valor.replace(/(\d{5})(\d{3})/, "$1-$2")
+            document.getElementById('cep').value = valor;
         }
 
         function formataRG() {
