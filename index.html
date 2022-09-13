@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="https://siga.arcoconsultoria.com/SIGA/libsiga/css/main.css">
     <link rel="stylesheet" href="https://siga.arcoconsultoria.com/SIGA/libsiga/plugins/datatables/datatables.min.css">
     <link rel="stylesheet" href="https://siga.arcoconsultoria.com/SIGA/libsiga/plugins/bootstrap/css/bootstrap5Min.css">
-    <link rel="stylesheet" href="style.css">
     <title>Cadastro de Associado</title>
     <style>
         label {
@@ -128,8 +127,8 @@
                 <div class="tab-pane row" id="pagina_cadastro">
                     <div id="left" class="col-6">
                         <div class="div-input form-floating mb-3">
-                            <input class="form-control" type="text" autocomplete="off" id="associado" placeholder="Joaquin Pereira"
-                                style="width: 400px;">
+                            <input class="form-control" type="text" autocomplete="off" id="associado"
+                                placeholder="Joaquin Pereira" style="width: 400px;">
                             <label for="">Nome do Associado<span class="obg">*</span></label>
                         </div>
                         <div class="div-input">
@@ -143,15 +142,16 @@
                                     style="font-size: 75%;">CNPJ</span>
                             </div>
                             <div class="form-floating mb-3 m-t-10">
-                                <input class="form-control" type="text" autocomplete="off" id="cpf_cnpj" placeholder="123.456.789-99"
-                                    maxlength="" onfocusout="formatar()">
+                                <input class="form-control" type="text" autocomplete="off" id="cpf_cnpj"
+                                    placeholder="123.456.789-99" maxlength="" onfocusout="formatar()">
                                 <label for="">CPF/CNPJ<span class="obg">*</span></label>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="div-input form-floating mb-3 col-5" style="display: inline-block;">
-                                <input class="form-control" type="text" autocomplete="off" name="cep" id="cep" placeholder="32604-158"
-                                    maxlength="8" style="width: 210px;" onfocusout="formataCEP()">
+                                <input class="form-control" type="text" autocomplete="off" name="cep" id="cep"
+                                    placeholder="32604-158" maxlength="8" style="width: 210px;"
+                                    onfocusout="formataCEP()">
                                 <label for="" id="">CEP</label>
                             </div>
                             <div class="div-input mb-3 col-5" style="display: inline-block;">
@@ -201,16 +201,19 @@
                         </div>
                         <div class="div-input form-floating mb-3 col-12">
                             <div class="col-5 form-floating mb-3" style="display: inline-block;">
-                                <input class="form-control" type="text" autocomplete="off" name="bairro" id="bairro" placeholder="Angola">
+                                <input class="form-control" type="text" autocomplete="off" name="bairro" id="bairro"
+                                    placeholder="Angola">
                                 <label for="" id="">Bairro</label>
                             </div>
                             <div class="col-5 form-floating mb-3" style="display: inline-block;">
-                                <input class="form-control" type="text" autocomplete="off" name="Cidade" id="cidade" placeholder="Betim">
+                                <input class="form-control" type="text" autocomplete="off" name="Cidade" id="cidade"
+                                    placeholder="Betim">
                                 <label for="" id="">Cidade</label>
                             </div>
                         </div>
                         <div class="div-input form-floating mb-3">
-                            <input class="form-control" type="text" autocomplete="off" name="" id="associacao" readonly value="associação">
+                            <input class="form-control" type="text" autocomplete="off" name="" id="associacao" readonly
+                                value="associação">
                             <label for="" id="">Empresa</label>
                         </div>
                     </div>
@@ -218,18 +221,20 @@
                         <div class="div-input">
                             <div class="col-12">
                                 <div class="form-floating mb-3 tel" style="display: inline-block;">
-                                    <input class="form-control" type="text" autocomplete="off" name="" id="sms"
-                                        placeholder="(31) 9 9999-9999" style="width: 130px;">
+                                    <input class="form-control form-cel" type="text" autocomplete="off" name="" id="sms"
+                                        onfocusout="formataTel(0)" placeholder="(31) 9 9999-9999" style="width: 130px;">
                                     <label for="" id="">Telefone 1<span class="obg">*</span></label>
                                 </div>
                                 <div class="form-floating mb-3 tel" style="display: inline-block;">
-                                    <input class="form-control" type="text" autocomplete="off" name="" id="tel2"
-                                        placeholder="(31) 9 9999-9999" style="width: 130px;">
+                                    <input class="form-control form-cel" type="text" autocomplete="off" name=""
+                                        id="tel2" onfocusout="formataTel(1)" placeholder="(31) 9 9999-9999"
+                                        style="width: 130px;">
                                     <label for="" id="">Telefone 2</label>
                                 </div>
                                 <div class="form-floating mb-3 tel" style="display: inline-block;">
-                                    <input class="form-control" type="text" autocomplete="off" name="" id="tel3"
-                                        placeholder="(31) 9 9999-9999" style="width: 130px;">
+                                    <input class="form-control form-cel" type="text" autocomplete="off" name=""
+                                        id="tel3" onfocusout="formataTel(2)" placeholder="(31) 9 9999-9999"
+                                        style="width: 130px;">
                                     <label for="" id="">Telefone 3</label>
                                 </div>
                             </div>
@@ -250,17 +255,17 @@
                             <div style="display: inline-block;" class="col-4">
                                 <label for="" style="margin-left: 5px;">Sexo<span class="obg">*</span></label>
                                 <input type="radio" name="sexo" id="masc" class="radio"
-                                    style="margin-left: 2px; margin-right: 2px;"><span style="font-size: 75%;"
-                                    onclick="sexo = 1">Masculino</span>
+                                    style="margin-left: 2px; margin-right: 2px;"><span
+                                    style="font-size: 75%;">Masculino</span>
                                 <input type="radio" name="sexo" id="fem" class="radio"
-                                    style="margin-left: 2px; margin-right: 2px;"><span style="font-size: 75%;"
-                                    onclick="sexo = 2">Feminino</span>
+                                    style="margin-left: 2px; margin-right: 2px;"><span
+                                    style="font-size: 75%;">Feminino</span>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="div-input form-floating mb-3 col-4" style="display: inline-block;">
-                                <input class="form-control" type="text" autocomplete="off" id="cnh" placeholder="36902051223"
-                                    style="width: 150px;">
+                                <input class="form-control" type="text" autocomplete="off" id="cnh"
+                                    placeholder="36902051223" style="width: 150px;">
                                 <label for="">CNH</label>
                             </div>
                             <div class="div-input form-floating mb-3 col-5" style="display: inline-block;">
@@ -270,12 +275,13 @@
                         </div>
                         <div class="col-12">
                             <div class="div-input form-floating mb-3 col-4" style="display: inline-block;">
-                                <input class="form-control" type="text" autocomplete="off" id="rg" placeholder="28.131.342-8"
-                                    style="width: 150px;" onfocusout="formataRG()">
+                                <input class="form-control" type="text" autocomplete="off" id="rg"
+                                    placeholder="28.131.342-8" style="width: 150px;" onfocusout="formataRG()">
                                 <label for="">RG</label>
                             </div>
                             <div class="div-input form-floating mb-3 col-6" style="display: inline-block;">
-                                <input class="form-control" type="text" autocomplete="off" id="usuario" placeholder="usuário">
+                                <input class="form-control" type="text" autocomplete="off" id="usuario"
+                                    placeholder="usuário">
                                 <label for="">Usuário</label>
                             </div>
                         </div>
@@ -295,25 +301,25 @@
                     </div>
                     <div class="col-9" style="margin: 0 auto;">
                         <div class="div-input form-floating mb-3 col-7 d-inline-block">
-                            <input class="form-control" type="text" autocomplete="off" id="banco" placeholder="Joaquin Pereira"
-                                style="width: 400px;">
+                            <input class="form-control" type="text" autocomplete="off" id="banco"
+                                placeholder="Joaquin Pereira" style="width: 400px;">
                             <label for="">Banco</label>
                         </div>
                         <div class="div-input form-floating mb-3 col-3 d-inline-block">
-                            <input class="form-control" type="text" autocomplete="off" id="agencia" placeholder="Joaquin Pereira"
-                                style="width: 200px;">
+                            <input class="form-control" type="text" autocomplete="off" id="agencia"
+                                placeholder="Joaquin Pereira" style="width: 200px;">
                             <label for="">Agencia</label>
                         </div>
                     </div>
                     <div class="col-9" style="margin: 0 auto;">
                         <div class="div-input form-floating mb-3 col-7 d-inline-block">
-                            <input class="form-control" type="text" autocomplete="off" id="responsavel" placeholder="Joaquin Pereira"
-                                style="width: 400px;">
+                            <input class="form-control" type="text" autocomplete="off" id="responsavel"
+                                placeholder="Joaquin Pereira" style="width: 400px;">
                             <label for="">Responsável</label>
                         </div>
                         <div class="div-input form-floating mb-3 col-3 d-inline-block">
-                            <input class="form-control" type="text" autocomplete="off" id="conta" placeholder="Joaquin Pereira"
-                                style="width: 200px;">
+                            <input class="form-control" type="text" autocomplete="off" id="conta"
+                                placeholder="Joaquin Pereira" style="width: 200px;">
                             <label for="">Conta</label>
                         </div>
                     </div>
@@ -328,8 +334,8 @@
                                 style="font-size: 75%;">CNPJ</span>
                         </div>
                         <div class="form-floating mb-3 m-t-10 col-7" style="display: inline-block; width: 500px;">
-                            <input class="form-control" type="text" autocomplete="off" id="cpf_cnpj_Dbanco" placeholder="123.456.789-99"
-                                maxlength="" onfocusout="formatar()">
+                            <input class="form-control" type="text" autocomplete="off" id="cpf_cnpj_Dbanco"
+                                placeholder="123.456.789-99" maxlength="" onfocusout="formatar()">
                             <label for="">CPF/CNPJ</label>
                         </div>
                     </div>
@@ -421,8 +427,13 @@
             }
         }
 
-        function formataRG() {
+        function formataTel(local) {
+            let cel = document.querySelectorAll('.form-cel')[local].value;
+            cel = cel.replace(/(\d{2})(\d{1})(\d{4})(\d{4})/, "($1) $2 $3-$4")
+            document.querySelectorAll('.form-cel')[local].value = cel
+        }
 
+        function formataRG() {
             let valor = document.getElementById('rg').value
             if (valor.length == 9) {
                 valor = valor.replace(/(\d{2})(\d{3})(\d{3})(\d{1})/, "$1.$2.$3-$4")
@@ -430,19 +441,34 @@
             }
         }
 
+        var validacaoEmail = false
+
         function validateEmail() {
             let email = document.getElementById('email').value;
             var re = /\S+@\S+\.\S+/;
             let teste = re.test(email);
             if (teste) {
                 document.getElementById('email').style.border = '';
+                validacaoEmail = true;
             }
             else {
                 document.getElementById('email').style.border = 'red solid 1px';
+                validacaoEmail = false;
             }
         }
 
-        var sexo;
+        function obtemSexo() {
+            let teste1 = document.getElementById('masc').checked
+            let teste2 = document.getElementById('fem').checked
+            if (teste1 || teste2) {
+                return true
+            }
+            else {
+                return false
+            }
+        }
+
+        var sexo = 0;
 
         function obterDados() {
             let nome = document.getElementById('associado').value;
@@ -452,9 +478,9 @@
             if (
                 nome != null &&
                 cpf_cnpj != null &&
-                (sexo == 1 || sexo == 2) &&
+                obtemSexo() &&
                 sms != null &&
-                email != null
+                validacaoEmail
             ) {
                 let cep = document.getElementById('cep').value;
                 let endereco = document.getElementById('endereco').value;
@@ -466,7 +492,17 @@
                 let data_cnh = document.getElementById('data_cnh').value;
                 let rg = document.getElementById('rg').value;
                 let uf = document.getElementById('uf').value;
+                endereco = `${endereco},${num}`
+                let tipo_conta = document.getElementById('sConta').value;
+                let banco = document.getElementById('banco').value;
+                let agencia = document.getElementById('agencia').value;
+                let responsavel = document.getElementById('responsavel').value;
+                let conta = document.getElementById('conta').value;
+                let cpf_cnpj_dado = document.getElementById('cpf_cnpj_Dbanco').value
+                buscaAss(nome, cpf_cnpj, sms, email, cep, endereco, bairro, cnh, tel2, tel3, data_cnh, rg, uf, tipo_conta, banco, agencia, responsavel, conta, cpf_cnpj_dado)
             }
+            else
+                console.log(nome, cpf_cnpj, sexo, sms, email)
         }
 
         function viaCep(cep) {
@@ -499,8 +535,9 @@
             }
         }
 
-        function buscaAss() {
-            /*  */
+        function buscaAss(nome, cpf_cnpj, sms, email, cep, endereco, bairro, cnh, tel2, tel3, data_cnh, rg, uf, tipo_conta, banco, agencia, responsavel, conta, cpf_cnpj_dado) {
+            let lista = [nome, cpf_cnpj, sms, email, cep, endereco, bairro, cnh, tel2, tel3, data_cnh, rg, uf, tipo_conta, banco, agencia, responsavel, conta, cpf_cnpj_dado]
+            parent.ebfFlowExecute('Novo cadastro de associados - salvar dados', lista);
         }
 
     </script>
