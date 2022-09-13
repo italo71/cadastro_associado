@@ -15,11 +15,16 @@
     <link rel="stylesheet" href="https://siga.arcoconsultoria.com/SIGA/libsiga/css/main.css">
     <link rel="stylesheet" href="https://siga.arcoconsultoria.com/SIGA/libsiga/plugins/datatables/datatables.min.css">
     <link rel="stylesheet" href="https://siga.arcoconsultoria.com/SIGA/libsiga/plugins/bootstrap/css/bootstrap5Min.css">
+    <link rel="stylesheet" href="style.css">
     <title>Cadastro de Associado</title>
     <style>
         label {
             display: block;
             border-radius: 5px;
+        }
+
+        html {
+            overflow-y: hidden;
         }
 
         .div-input {
@@ -54,6 +59,36 @@
 
         .obg {
             color: red !important;
+            margin-left: 3px;
+        }
+
+        #header {
+            padding: 0 !important;
+        }
+
+        #nav-ul {
+            list-style-type: none;
+        }
+
+        #nav-ul li {
+            display: inline;
+            border: solid 1px rgba(179, 179, 179, 0.781);
+            padding: 0 5px;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+        }
+
+        .act {
+            border-bottom: none !important;
+        }
+
+        #nav-ul li:first-child {
+            margin-left: -5.5%;
+        }
+
+        #nav-ul a {
+            color: black;
+            text-decoration: none;
         }
     </style>
 </head>
@@ -61,12 +96,39 @@
 <body>
 
     <div class="container">
-        <div class="justify-content-center m-t-20">
+        <div class="justify-content-center m-t-5 col-12">
             <div class="card col-10">
-                <div class="row">
+                <div class="row" id="header">
+                    <div class="col-8">
+                        <ul id="nav-ul">
+                            <li role="presentation" class="tab-select act" id="pagina_cad">
+                                <a href="#pagina_cadastro" data-toggle="tab" onclick="alterTab(0)">
+                                    Cadastrar
+                                </a>
+                            </li>
+                            <li role="presentation" class="tab-select" id="aba_dbbancario">
+                                <a href="#pagina_dbancarios" data-toggle="tab" onclick="alterTab(1)">
+                                    Dados Bancarios
+                                </a>
+                            </li>
+
+                            <li role="presentation" class="tab-select" id="aba_mont_cat">
+                                <a href="#pagina_mont_cat" data-toggle="tab" onclick="alterTab(2)">
+                                    Sinistro
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-4" style="margin-top: 5px;">
+                        <input type="text" placeholder="Associado"
+                            style="display: inline; border: solid 1px lightgray; border-radius: 5px; height: 30px; margin-top: 3px;">
+                        <button class="btn btn-success" style="margin-left: 5px;" onclick="buscaAss()">Buscar</button>
+                    </div>
+                </div>
+                <div class="tab-pane row" id="pagina_cadastro">
                     <div id="left" class="col-6">
                         <div class="div-input form-floating mb-3">
-                            <input class="form-control" type="text" id="associado" placeholder="Joaquin Pereira"
+                            <input class="form-control" type="text" autocomplete="off" id="associado" placeholder="Joaquin Pereira"
                                 style="width: 400px;">
                             <label for="">Nome do Associado<span class="obg">*</span></label>
                         </div>
@@ -81,14 +143,14 @@
                                     style="font-size: 75%;">CNPJ</span>
                             </div>
                             <div class="form-floating mb-3 m-t-10">
-                                <input class="form-control" type="text" id="cpf_cnpj" placeholder="123.456.789-99"
+                                <input class="form-control" type="text" autocomplete="off" id="cpf_cnpj" placeholder="123.456.789-99"
                                     maxlength="" onfocusout="formatar()">
                                 <label for="">CPF/CNPJ<span class="obg">*</span></label>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="div-input form-floating mb-3 col-5" style="display: inline-block;">
-                                <input class="form-control" type="text" name="cep" id="cep" placeholder="32604-158"
+                                <input class="form-control" type="text" autocomplete="off" name="cep" id="cep" placeholder="32604-158"
                                     maxlength="8" style="width: 210px;" onfocusout="formataCEP()">
                                 <label for="" id="">CEP</label>
                             </div>
@@ -125,23 +187,30 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="div-input form-floating mb-3">
-                            <input class="form-control" type="text" name="Endereco" id="endereco"
-                                placeholder="Rua José da Conceição">
-                            <label for="" id="" style="width: 400px;">Endereço</label>
+                        <div class="col-12">
+                            <div class="div-input form-floating mb-3 col-7" style="display: inline-block;">
+                                <input class="form-control" type="text" autocomplete="off" name="Endereco" id="endereco"
+                                    placeholder="Rua José da Conceição">
+                                <label for="" id="" style="width: 400px;">Endereço</label>
+                            </div>
+                            <div class="div-input form-floating mb-3 col-3" style="display: inline-block;">
+                                <input class="form-control" type="text" autocomplete="off" name="num" id="num"
+                                    placeholder="Rua José da Conceição">
+                                <label for="" id="" style="width: 150px;">Número</label>
+                            </div>
                         </div>
                         <div class="div-input form-floating mb-3 col-12">
                             <div class="col-5 form-floating mb-3" style="display: inline-block;">
-                                <input class="form-control" type="text" name="bairro" id="bairro" placeholder="Angola">
+                                <input class="form-control" type="text" autocomplete="off" name="bairro" id="bairro" placeholder="Angola">
                                 <label for="" id="">Bairro</label>
                             </div>
                             <div class="col-5 form-floating mb-3" style="display: inline-block;">
-                                <input class="form-control" type="text" name="Cidade" id="cidade" placeholder="Betim">
+                                <input class="form-control" type="text" autocomplete="off" name="Cidade" id="cidade" placeholder="Betim">
                                 <label for="" id="">Cidade</label>
                             </div>
                         </div>
                         <div class="div-input form-floating mb-3">
-                            <input class="form-control" type="text" name="" id="associacao" readonly value="associação">
+                            <input class="form-control" type="text" autocomplete="off" name="" id="associacao" readonly value="associação">
                             <label for="" id="">Empresa</label>
                         </div>
                     </div>
@@ -149,17 +218,17 @@
                         <div class="div-input">
                             <div class="col-12">
                                 <div class="form-floating mb-3 tel" style="display: inline-block;">
-                                    <input class="form-control" type="text" name="" id="sms"
+                                    <input class="form-control" type="text" autocomplete="off" name="" id="sms"
                                         placeholder="(31) 9 9999-9999" style="width: 130px;">
                                     <label for="" id="">Telefone 1<span class="obg">*</span></label>
                                 </div>
                                 <div class="form-floating mb-3 tel" style="display: inline-block;">
-                                    <input class="form-control" type="text" name="" id="tel2"
+                                    <input class="form-control" type="text" autocomplete="off" name="" id="tel2"
                                         placeholder="(31) 9 9999-9999" style="width: 130px;">
                                     <label for="" id="">Telefone 2</label>
                                 </div>
                                 <div class="form-floating mb-3 tel" style="display: inline-block;">
-                                    <input class="form-control" type="text" name="" id="tel3"
+                                    <input class="form-control" type="text" autocomplete="off" name="" id="tel3"
                                         placeholder="(31) 9 9999-9999" style="width: 130px;">
                                     <label for="" id="">Telefone 3</label>
                                 </div>
@@ -167,7 +236,7 @@
                         </div>
                         <div class="div-input justify-content-center">
                             <div class="form-floating mb-3 col-12" style="display: inline-block;">
-                                <input class="form-control" type="text" name="" id="email"
+                                <input class="form-control" type="text" autocomplete="off" name="" id="email"
                                     placeholder="exemplo@exemplo.com" onfocusout="validateEmail()">
                                 <label for="" id="">E-mail<span class="obg">*</span></label>
                             </div>
@@ -181,16 +250,16 @@
                             <div style="display: inline-block;" class="col-4">
                                 <label for="" style="margin-left: 5px;">Sexo<span class="obg">*</span></label>
                                 <input type="radio" name="sexo" id="masc" class="radio"
-                                    style="margin-left: 2px; margin-right: 2px;"><span
-                                    style="font-size: 75%;">Masculino</span>
+                                    style="margin-left: 2px; margin-right: 2px;"><span style="font-size: 75%;"
+                                    onclick="sexo = 1">Masculino</span>
                                 <input type="radio" name="sexo" id="fem" class="radio"
-                                    style="margin-left: 2px; margin-right: 2px;"><span
-                                    style="font-size: 75%;">Feminino</span>
+                                    style="margin-left: 2px; margin-right: 2px;"><span style="font-size: 75%;"
+                                    onclick="sexo = 2">Feminino</span>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="div-input form-floating mb-3 col-4" style="display: inline-block;">
-                                <input class="form-control" type="text" id="cnh" placeholder="36902051223"
+                                <input class="form-control" type="text" autocomplete="off" id="cnh" placeholder="36902051223"
                                     style="width: 150px;">
                                 <label for="">CNH</label>
                             </div>
@@ -201,16 +270,97 @@
                         </div>
                         <div class="col-12">
                             <div class="div-input form-floating mb-3 col-4" style="display: inline-block;">
-                                <input class="form-control" type="text" id="rg" placeholder="28.131.342-8"
+                                <input class="form-control" type="text" autocomplete="off" id="rg" placeholder="28.131.342-8"
                                     style="width: 150px;" onfocusout="formataRG()">
                                 <label for="">RG</label>
                             </div>
                             <div class="div-input form-floating mb-3 col-6" style="display: inline-block;">
-                                <input class="form-control" type="text" id="usuario" placeholder="usuário">
+                                <input class="form-control" type="text" autocomplete="off" id="usuario" placeholder="usuário">
                                 <label for="">Usuário</label>
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="tab-pane row" id="dados_bancarios" style="display: none;">
+                    <div class="div-input col-12">
+                        <div class="col-2" style="margin-left: 14.2%;">
+                            <label for="">Tipo de conta</label>
+                            <select class="form-select" aria-label="Default select example" id="sConta"
+                                style="font-size: 10pt; box-shadow: none;">
+                                <option value="" selected></option>
+                                <option value="1">Corrente</option>
+                                <option value="2">Poupança</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-9" style="margin: 0 auto;">
+                        <div class="div-input form-floating mb-3 col-7 d-inline-block">
+                            <input class="form-control" type="text" autocomplete="off" id="banco" placeholder="Joaquin Pereira"
+                                style="width: 400px;">
+                            <label for="">Banco</label>
+                        </div>
+                        <div class="div-input form-floating mb-3 col-3 d-inline-block">
+                            <input class="form-control" type="text" autocomplete="off" id="agencia" placeholder="Joaquin Pereira"
+                                style="width: 200px;">
+                            <label for="">Agencia</label>
+                        </div>
+                    </div>
+                    <div class="col-9" style="margin: 0 auto;">
+                        <div class="div-input form-floating mb-3 col-7 d-inline-block">
+                            <input class="form-control" type="text" autocomplete="off" id="responsavel" placeholder="Joaquin Pereira"
+                                style="width: 400px;">
+                            <label for="">Responsável</label>
+                        </div>
+                        <div class="div-input form-floating mb-3 col-3 d-inline-block">
+                            <input class="form-control" type="text" autocomplete="off" id="conta" placeholder="Joaquin Pereira"
+                                style="width: 200px;">
+                            <label for="">Conta</label>
+                        </div>
+                    </div>
+                    <div class="div-input col-11 justify-content-center">
+                        <div class="col-2" style="display: inline-block; margin-left: 15px;">
+                            <label for="" style="margin-left: 12px;">Tipo</label>
+                            <input type="radio" name="cpf-cnpj_dado" id="cpf_dado" class="radio"
+                                style="margin-left: 10px; margin-right: 5px;" onclick="alterarCpf_cnpj(1)"><span
+                                style="font-size: 75%;">CPF</span>
+                            <input type="radio" name="cpf-cnpj_dado" id="cnpj_dado" class="radio"
+                                style="margin-left: 10px; margin-right: 5px;" onclick="alterarCpf_cnpj(2)"><span
+                                style="font-size: 75%;">CNPJ</span>
+                        </div>
+                        <div class="form-floating mb-3 m-t-10 col-7" style="display: inline-block; width: 500px;">
+                            <input class="form-control" type="text" autocomplete="off" id="cpf_cnpj_Dbanco" placeholder="123.456.789-99"
+                                maxlength="" onfocusout="formatar()">
+                            <label for="">CPF/CNPJ</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane row" id="sinistro" style="display: none;">
+                    <div class="div-input col-12">
+                        <div class="table col-12">
+                            <table class="table" id="table_sinistro" style="width:95%">
+                                <thead>
+                                    <tr>
+                                        <th class="th_table align-center"></th>
+                                        <th class="th_table align-center">Sinistro</th>
+                                        <th class="th_table align-center">Data Abertuda</th>
+                                        <th class="th_table align-center">Veículo</th>
+                                        <th class="th_table align-center">Cobertura</th>
+                                        <th class="th_table align-center">Ano</th>
+                                        <th class="th_table align-center">Placa</th>
+                                        <th class="th_table align-center">Tipo Evento</th>
+                                        <th class="th_table align-center">Evento Relacionado</th>
+                                        <th class="th_table align-center">Oficina</th>
+                                        <th class="th_table align-center">Nome</th>
+                                </thead>
+                                <tbody class="scrollable">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1" style="position: absolute; bottom: 8px; right: -12px;">
+                    <button class="btn btn-success" id="btn-salvar">Salvar</button>
                 </div>
             </div>
         </div>
@@ -292,24 +442,65 @@
             }
         }
 
-        function obterDados(){
+        var sexo;
+
+        function obterDados() {
             let nome = document.getElementById('associado').value;
             let cpf_cnpj = document.getElementById('cpf_cnpj').value;
-            let cep = document.getElementById('cep').value;
-            let endereco = document.getElementById('endereco').value;
-            let bairro = document.getElementById('bairro').value;
-            
+            let sms = document.getElementById('sms').value;
+            let email = document.getElementById('email').value;
+            if (
+                nome != null &&
+                cpf_cnpj != null &&
+                (sexo == 1 || sexo == 2) &&
+                sms != null &&
+                email != null
+            ) {
+                let cep = document.getElementById('cep').value;
+                let endereco = document.getElementById('endereco').value;
+                let bairro = document.getElementById('bairro').value;
+                let num = document.getElementById('num').value;
+                let cnh = document.getElementById('cnh').value;
+                let tel2 = document.getElementById('tel2').value;
+                let tel3 = document.getElementById('tel3').value;
+                let data_cnh = document.getElementById('data_cnh').value;
+                let rg = document.getElementById('rg').value;
+                let uf = document.getElementById('uf').value;
+            }
         }
 
-        function viaCep(cep){
+        function viaCep(cep) {
             fetch(`https://viacep.com.br/ws/${cep}/json`)
-                    .then(response => {
-                        return response.json()
-                            .then(data => data);
-                            console.log(data)
-                        document.getElementById('cidade').value = data.cidade;
-                        }).then((data) => {
-                    }).catch((err) => { });
+                .then(response => {
+                    return response.json()
+                        .then((data) => {
+                            document.getElementById('cidade').value = data.localidade
+                            document.getElementById('bairro').value = data.bairro
+                            document.getElementById('endereco').value = data.logradouro
+                            document.getElementById('uf').value = data.uf
+                        });
+                }).then((data) => {
+                }).catch((err) => { });
+        }
+
+        function alterTab(tab) {
+            let qnt = document.querySelectorAll('.tab-pane').length
+            for (let i = 0; i < qnt; i++) {
+                document.querySelectorAll('.tab-pane')[i].style.display = 'none'
+                if (document.querySelectorAll('.tab-select')[i].classList.contains('act')) {
+                    document.querySelectorAll('.tab-select')[i].classList.remove('act')
+                }
+            }
+            document.getElementById('btn-salvar').style.display = ''
+            document.querySelectorAll('.tab-pane')[tab].style.display = ''
+            document.querySelectorAll('.tab-select')[tab].classList.add('act')
+            if (tab == 2) {
+                document.getElementById('btn-salvar').style.display = 'none'
+            }
+        }
+
+        function buscaAss() {
+            /*  */
         }
 
     </script>
