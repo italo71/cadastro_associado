@@ -143,7 +143,7 @@
                             </div>
                             <div class="form-floating mb-3 m-t-10">
                                 <input class="form-control" type="text" autocomplete="off" id="cpf_cnpj"
-                                    placeholder="123.456.789-99" maxlength="" onfocusout="formatar('cpf_cnpj')">
+                                    placeholder="123.456.789-99" maxlength="" onfocusout="formatar('cpf_cnpj')" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
                                 <label for="">CPF/CNPJ<span class="obg">*</span></label>
                             </div>
                         </div>
@@ -335,7 +335,7 @@
                         </div>
                         <div class="form-floating mb-3 m-t-10 col-7" style="display: inline-block; width: 500px;">
                             <input class="form-control" type="text" autocomplete="off" id="cpf_cnpj_Dbanco"
-                                placeholder="123.456.789-99" maxlength="" onfocusout="formatar('cpf_cnpj_Dbanco')">
+                                placeholder="123.456.789-99" maxlength="" onfocusout="formatar('cpf_cnpj_Dbanco')" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
                             <label for="">CPF/CNPJ</label>
                         </div>
                     </div>
@@ -396,6 +396,7 @@
             valor = valor.replace(/\./g, '')
             valor = valor.replace(/-/g, '')
             valor = valor.replace(/\//g, '')
+            valor = valor.replace(/ /g, '')
             console.log(valor.length)
             if (valor.length == 11) {
                 formataCPF(id);
@@ -415,6 +416,7 @@
             valor = valor.replace(/\./g, '')
             valor = valor.replace(/-/g, '')
             valor = valor.replace(/\//g, '')
+            valor = valor.replace(/ /g, '')
             valor = valor.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4")
             document.getElementById(`${id}`).value = valor;
         }
@@ -424,6 +426,7 @@
             valor = valor.replace(/\./g, '')
             valor = valor.replace(/-/g, '')
             valor = valor.replace(/\//g, '')
+            valor = valor.replace(/ /g, '')
             valor = valor.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, "$1.$2.$3\/$4-$5")
             document.getElementById(`${id}`).value = valor;
         }
