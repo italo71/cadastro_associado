@@ -135,15 +135,15 @@
                             <div class="col-4">
                                 <label for="" style="margin-left: 12px;">Tipo <span class="obg">*</span></label>
                                 <input type="radio" name="cpf-cnpj" id="cpf" class="radio"
-                                    style="margin-left: 10px; margin-right: 5px;" onclick="alterarCpf_cnpj(1)"><span
+                                    style="margin-left: 10px; margin-right: 5px;" onclick="alterarCpf_cnpj(1,'cpf_cnpj')"><span
                                     style="font-size: 75%;">CPF</span>
                                 <input type="radio" name="cpf-cnpj" id="cnpj" class="radio"
-                                    style="margin-left: 10px; margin-right: 5px;" onclick="alterarCpf_cnpj(2)"><span
+                                    style="margin-left: 10px; margin-right: 5px;" onclick="alterarCpf_cnpj(2,'cpf_cnpj')"><span
                                     style="font-size: 75%;">CNPJ</span>
                             </div>
                             <div class="form-floating mb-3 m-t-10">
                                 <input class="form-control" type="text" autocomplete="off" id="cpf_cnpj"
-                                    placeholder="123.456.789-99" maxlength="" onfocusout="formatar()">
+                                    placeholder="123.456.789-99" maxlength="" onfocusout="formatar('cpf_cnpj')">
                                 <label for="">CPF/CNPJ<span class="obg">*</span></label>
                             </div>
                         </div>
@@ -327,15 +327,15 @@
                         <div class="col-2" style="display: inline-block; margin-left: 15px;">
                             <label for="" style="margin-left: 12px;">Tipo</label>
                             <input type="radio" name="cpf-cnpj_dado" id="cpf_dado" class="radio"
-                                style="margin-left: 10px; margin-right: 5px;" onclick="alterarCpf_cnpj(1)"><span
+                                style="margin-left: 10px; margin-right: 5px;" onclick="alterarCpf_cnpj(1,'cpf_cnpj_Dbanco')"><span
                                 style="font-size: 75%;">CPF</span>
                             <input type="radio" name="cpf-cnpj_dado" id="cnpj_dado" class="radio"
-                                style="margin-left: 10px; margin-right: 5px;" onclick="alterarCpf_cnpj(2)"><span
+                                style="margin-left: 10px; margin-right: 5px;" onclick="alterarCpf_cnpj(2,'cpf_cnpj_Dbanco')"><span
                                 style="font-size: 75%;">CNPJ</span>
                         </div>
                         <div class="form-floating mb-3 m-t-10 col-7" style="display: inline-block; width: 500px;">
                             <input class="form-control" type="text" autocomplete="off" id="cpf_cnpj_Dbanco"
-                                placeholder="123.456.789-99" maxlength="" onfocusout="formatar()">
+                                placeholder="123.456.789-99" maxlength="" onfocusout="formatar('cpf_cnpj_Dbanco')">
                             <label for="">CPF/CNPJ</label>
                         </div>
                     </div>
@@ -377,45 +377,55 @@
             document.getElementById('cpf_cnpj').setAttribute('readonly', 'true')
         }
 
-        function alterarCpf_cnpj(tipo) {
+        function alterarCpf_cnpj(tipo,id) {
             if (tipo == 1) {
-                document.getElementById('cpf_cnpj').setAttribute('maxlength', '11')
-                document.getElementById('cpf_cnpj').value = ''
+                document.getElementById(`${id}`).setAttribute('maxlength', '11')
+                document.getElementById(`${id}`).value = ''
             }
             else {
-                document.getElementById('cpf_cnpj').setAttribute('maxlength', '14')
-                document.getElementById('cpf_cnpj').value = ''
+                document.getElementById(`${id}`).setAttribute('maxlength', '14')
+                document.getElementById(`${id}`).value = ''
             }
-            if (document.getElementById('cpf_cnpj').hasAttributes('readonly')) {
-                document.getElementById('cpf_cnpj').removeAttribute('readonly')
+            if (document.getElementById(`${id}`).hasAttributes('readonly')) {
+                document.getElementById(`${id}`).removeAttribute('readonly')
             }
         }
 
-        function formatar() {
-            let valor = document.getElementById('cpf_cnpj').value;
+        function formatar(id) {
+            let valor = document.getElementById(`${id}`).value;
+            valor = valor.replace(/\./g, '')
+            valor = valor.replace(/-/g, '')
+            valor = valor.replace(/\//g, '')
+            console.log(valor.length)
             if (valor.length == 11) {
-                formataCPF();
-                document.getElementById('cpf_cnpj').style.border = ''
+                formataCPF(id);
+                document.getElementById(`${id}`).style.border = ''
             }
             else if (valor.length == 14) {
-                formataCNPJ();
-                document.getElementById('cpf_cnpj').style.border = ''
+                formataCNPJ(id);
+                document.getElementById(`${id}`).style.border = ''
             }
             else {
-                document.getElementById('cpf_cnpj').style.border = 'red solid 1px'
+                document.getElementById(`${id}`).style.border = 'red solid 1px'
             }
         }
 
-        function formataCPF() {
-            let valor = document.getElementById('cpf_cnpj').value
+        function formataCPF(id) {
+            let valor = document.getElementById(`${id}`).value
+            valor = valor.replace(/\./g, '')
+            valor = valor.replace(/-/g, '')
+            valor = valor.replace(/\//g, '')
             valor = valor.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4")
-            document.getElementById('cpf_cnpj').value = valor;
+            document.getElementById(`${id}`).value = valor;
         }
 
-        function formataCNPJ() {
-            let valor = document.getElementById('cpf_cnpj').value
+        function formataCNPJ(id) {
+            let valor = document.getElementById(`${id}`).value
+            valor = valor.replace(/\./g, '')
+            valor = valor.replace(/-/g, '')
+            valor = valor.replace(/\//g, '')
             valor = valor.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, "$1.$2.$3\/$4-$5")
-            document.getElementById('cpf_cnpj').value = valor;
+            document.getElementById(`${id}`).value = valor;
         }
 
         function formataCEP() {
