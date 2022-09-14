@@ -119,7 +119,8 @@
                         </ul>
                     </div>
                     <div class="col-4" style="margin-top: 5px;">
-                        <input type="text" placeholder="Associado"
+                        <input type="text" placeholder="CPF/CNPJ do Associado" id="input-busca"
+                            onkeypress="return event.charCode >= 48 && event.charCode <= 57"
                             style="display: inline; border: solid 1px lightgray; border-radius: 5px; height: 30px; margin-top: 3px;">
                         <button class="btn btn-success" style="margin-left: 5px;" onclick="buscaAss()">Buscar</button>
                     </div>
@@ -128,22 +129,23 @@
                     <div id="left" class="col-6">
                         <div class="div-input form-floating mb-3">
                             <input class="form-control" type="text" autocomplete="off" id="associado"
-                                placeholder="Joaquin Pereira" style="width: 400px;">
+                                placeholder="Nome do Associado" style="width: 400px;">
                             <label for="">Nome do Associado<span class="obg">*</span></label>
                         </div>
                         <div class="div-input">
                             <div class="col-4">
                                 <label for="" style="margin-left: 12px;">Tipo <span class="obg">*</span></label>
                                 <input type="radio" name="cpf-cnpj" id="cpf" class="radio"
-                                    style="margin-left: 10px; margin-right: 5px;" onclick="alterarCpf_cnpj(1,'cpf_cnpj')"><span
-                                    style="font-size: 75%;">CPF</span>
+                                    style="margin-left: 10px; margin-right: 5px;"
+                                    onclick="alterarCpf_cnpj(1,'cpf_cnpj')"><span style="font-size: 75%;">CPF</span>
                                 <input type="radio" name="cpf-cnpj" id="cnpj" class="radio"
-                                    style="margin-left: 10px; margin-right: 5px;" onclick="alterarCpf_cnpj(2,'cpf_cnpj')"><span
-                                    style="font-size: 75%;">CNPJ</span>
+                                    style="margin-left: 10px; margin-right: 5px;"
+                                    onclick="alterarCpf_cnpj(2,'cpf_cnpj')"><span style="font-size: 75%;">CNPJ</span>
                             </div>
                             <div class="form-floating mb-3 m-t-10">
-                                <input class="form-control" type="text" autocomplete="off" id="cpf_cnpj"
-                                    placeholder="123.456.789-99" maxlength="" onfocusout="formatar('cpf_cnpj')" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                                <input class="form-control" type="text" autocomplete="off" id="cpf_cnpj" placeholder="."
+                                    maxlength="" onfocusout="formatar('cpf_cnpj')"
+                                    onkeypress="return event.charCode >= 48 && event.charCode <= 57">
                                 <label for="">CPF/CNPJ<span class="obg">*</span></label>
                             </div>
                         </div>
@@ -248,17 +250,17 @@
                         </div>
                         <div class="col-12">
                             <div class="div-input form-floating mb-3 col-4" style="display: inline-block;">
-                                <input class="form-control" type="date" name="Endereco" id="endereco"
+                                <input class="form-control" type="date" name="Endereco" id="data_nasc"
                                     placeholder="00/00/0000">
                                 <label for="" id="" style="width: 400px;">Data de Nascimento</label>
                             </div>
-                            <div style="display: inline-block;" class="col-4">
+                            <div style="display: inline-block;" class="col-5">
                                 <label for="" style="margin-left: 5px;">Sexo<span class="obg">*</span></label>
                                 <input type="radio" name="sexo" id="masc" class="radio"
-                                    style="margin-left: 2px; margin-right: 2px;"><span
-                                    style="font-size: 75%;">Masculino</span>
+                                    style="margin-left: -2px; margin-right: 2px;"><span
+                                    style="font-size: 75%;">Masculino</span><br>
                                 <input type="radio" name="sexo" id="fem" class="radio"
-                                    style="margin-left: 2px; margin-right: 2px;"><span
+                                    style="margin-left: -2px; margin-right: 2px;"><span
                                     style="font-size: 75%;">Feminino</span>
                             </div>
                         </div>
@@ -280,7 +282,7 @@
                                 <label for="">RG</label>
                             </div>
                             <div class="div-input form-floating mb-3 col-6" style="display: inline-block;">
-                                <input class="form-control" type="text" autocomplete="off" id="usuario"
+                                <input class="form-control" type="text" readonly id="usuario"
                                     placeholder="usuário">
                                 <label for="">Usuário</label>
                             </div>
@@ -327,15 +329,18 @@
                         <div class="col-2" style="display: inline-block; margin-left: 15px;">
                             <label for="" style="margin-left: 12px;">Tipo</label>
                             <input type="radio" name="cpf-cnpj_dado" id="cpf_dado" class="radio"
-                                style="margin-left: 10px; margin-right: 5px;" onclick="alterarCpf_cnpj(1,'cpf_cnpj_Dbanco')"><span
+                                style="margin-left: 10px; margin-right: 5px;"
+                                onclick="alterarCpf_cnpj_2(1,'cpf_cnpj_Dbanco')"><span
                                 style="font-size: 75%;">CPF</span>
                             <input type="radio" name="cpf-cnpj_dado" id="cnpj_dado" class="radio"
-                                style="margin-left: 10px; margin-right: 5px;" onclick="alterarCpf_cnpj(2,'cpf_cnpj_Dbanco')"><span
+                                style="margin-left: 10px; margin-right: 5px;"
+                                onclick="alterarCpf_cnpj_2(2,'cpf_cnpj_Dbanco')"><span
                                 style="font-size: 75%;">CNPJ</span>
                         </div>
                         <div class="form-floating mb-3 m-t-10 col-7" style="display: inline-block; width: 500px;">
                             <input class="form-control" type="text" autocomplete="off" id="cpf_cnpj_Dbanco"
-                                placeholder="123.456.789-99" maxlength="" onfocusout="formatar('cpf_cnpj_Dbanco')" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                                placeholder="123.456.789-99" maxlength="" onfocusout="formatar_2('cpf_cnpj_Dbanco')"
+                                onkeypress="return event.charCode >= 48 && event.charCode <= 57">
                             <label for="">CPF/CNPJ</label>
                         </div>
                     </div>
@@ -374,21 +379,23 @@
 
     <script>
         window.onload = () => {
-            document.getElementById('cpf_cnpj').setAttribute('readonly', 'true')
+            buscaAss(0);
         }
 
-        function alterarCpf_cnpj(tipo,id) {
+        /* Cadastrar - formatar cpf/cnpj */
+
+        var cpf_ou_cnpj;
+
+        function alterarCpf_cnpj(tipo, id) {
             if (tipo == 1) {
-                document.getElementById(`${id}`).setAttribute('maxlength', '11')
-                document.getElementById(`${id}`).value = ''
-            }
-            else {
                 document.getElementById(`${id}`).setAttribute('maxlength', '14')
                 document.getElementById(`${id}`).value = ''
             }
-            if (document.getElementById(`${id}`).hasAttributes('readonly')) {
-                document.getElementById(`${id}`).removeAttribute('readonly')
+            else {
+                document.getElementById(`${id}`).setAttribute('maxlength', '18')
+                document.getElementById(`${id}`).value = ''
             }
+            cpf_ou_cnpj = tipo;
         }
 
         function formatar(id) {
@@ -397,12 +404,11 @@
             valor = valor.replace(/-/g, '')
             valor = valor.replace(/\//g, '')
             valor = valor.replace(/ /g, '')
-            console.log(valor.length)
-            if (valor.length == 11) {
+            if (valor.length == 11 && cpf_ou_cnpj == 1) {
                 formataCPF(id);
                 document.getElementById(`${id}`).style.border = ''
             }
-            else if (valor.length == 14) {
+            else if (valor.length == 14 && cpf_ou_cnpj == 2) {
                 formataCNPJ(id);
                 document.getElementById(`${id}`).style.border = ''
             }
@@ -431,6 +437,63 @@
             document.getElementById(`${id}`).value = valor;
         }
 
+        /* Dados Bancarios - formatar cpf/cnpj */
+
+        var cpf_ou_cnpj_2;
+
+        function alterarCpf_cnpj_2(tipo, id) {
+            if (tipo == 1) {
+                document.getElementById(`${id}`).setAttribute('maxlength', '14')
+                document.getElementById(`${id}`).value = ''
+            }
+            else {
+                document.getElementById(`${id}`).setAttribute('maxlength', '18')
+                document.getElementById(`${id}`).value = ''
+            }
+            cpf_ou_cnpj_2 = tipo;
+        }
+
+        function formatar_2(id) {
+            let valor = document.getElementById(`${id}`).value;
+            valor = valor.replace(/\./g, '')
+            valor = valor.replace(/-/g, '')
+            valor = valor.replace(/\//g, '')
+            valor = valor.replace(/ /g, '')
+            if (valor.length == 11 && cpf_ou_cnpj_2 == 1) {
+                formataCPF_2(id);
+                document.getElementById(`${id}`).style.border = ''
+            }
+            else if (valor.length == 14 && cpf_ou_cnpj_2 == 2) {
+                formataCNPJ_2(id);
+                document.getElementById(`${id}`).style.border = ''
+            }
+            else {
+                document.getElementById(`${id}`).style.border = 'red solid 1px'
+            }
+        }
+
+        function formataCPF_2(id) {
+            let valor = document.getElementById(`${id}`).value
+            valor = valor.replace(/\./g, '')
+            valor = valor.replace(/-/g, '')
+            valor = valor.replace(/\//g, '')
+            valor = valor.replace(/ /g, '')
+            valor = valor.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4")
+            document.getElementById(`${id}`).value = valor;
+        }
+
+        function formataCNPJ_2(id) {
+            let valor = document.getElementById(`${id}`).value
+            valor = valor.replace(/\./g, '')
+            valor = valor.replace(/-/g, '')
+            valor = valor.replace(/\//g, '')
+            valor = valor.replace(/ /g, '')
+            valor = valor.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, "$1.$2.$3\/$4-$5")
+            document.getElementById(`${id}`).value = valor;
+        }
+
+        /* Outras formatações */
+
         function formataCEP() {
             let valor = document.getElementById('cep').value
             if (valor.length == 8) {
@@ -446,13 +509,20 @@
             document.querySelectorAll('.form-cel')[local].value = cel
         }
 
-        function formataRG() {
-            let valor = document.getElementById('rg').value
-            if (valor.length == 9) {
-                valor = valor.replace(/(\d{2})(\d{3})(\d{3})(\d{1})/, "$1.$2.$3-$4")
-                document.getElementById('rg').value = valor;
+        function formataRG(input) {
+            if (input == null || input == undefined) {
+                let valor = document.getElementById('rg').value
+                if (valor.length == 9) {
+                    valor = valor.replace(/(\d{2})(\d{3})(\d{3})(\d{1})/, "$1.$2.$3-$4")
+                    document.getElementById('rg').value = valor;
+                }
+            }
+            else {
+                return input.replace(/(\d{2})(\d{3})(\d{3})(\d{1})/, "$1.$2.$3-$4")
             }
         }
+
+        /* Validação de email */
 
         var validacaoEmail = false
 
@@ -470,6 +540,42 @@
             }
         }
 
+        /* Consulta cep e traz dados sobre */
+
+        function viaCep(cep) {
+            fetch(`https://viacep.com.br/ws/${cep}/json`)
+                .then(response => {
+                    return response.json()
+                        .then((data) => {
+                            document.getElementById('cidade').value = data.localidade
+                            document.getElementById('bairro').value = data.bairro
+                            document.getElementById('endereco').value = data.logradouro
+                            document.getElementById('uf').value = data.uf
+                        });
+                }).then((data) => {
+                }).catch((err) => { });
+        }
+
+        /* alterados de abas */
+
+        function alterTab(tab) {
+            let qnt = document.querySelectorAll('.tab-pane').length
+            for (let i = 0; i < qnt; i++) {
+                document.querySelectorAll('.tab-pane')[i].style.display = 'none'
+                if (document.querySelectorAll('.tab-select')[i].classList.contains('act')) {
+                    document.querySelectorAll('.tab-select')[i].classList.remove('act')
+                }
+            }
+            document.getElementById('btn-salvar').style.display = ''
+            document.querySelectorAll('.tab-pane')[tab].style.display = ''
+            document.querySelectorAll('.tab-select')[tab].classList.add('act')
+            if (tab == 2) {
+                document.getElementById('btn-salvar').style.display = 'none'
+            }
+        }
+
+        /* obtenção de dados */
+
         function obtemSexo() {
             let teste1 = document.getElementById('masc').checked
             let teste2 = document.getElementById('fem').checked
@@ -478,6 +584,12 @@
             }
             else {
                 return false
+            }
+            if (teste1) {
+                sexo = 1
+            }
+            else if (teste2) {
+                sexo = 2
             }
         }
 
@@ -511,46 +623,95 @@
                 let agencia = document.getElementById('agencia').value;
                 let responsavel = document.getElementById('responsavel').value;
                 let conta = document.getElementById('conta').value;
+                let data_nasc = document.getElementById('data_nasc').value
                 let cpf_cnpj_dado = document.getElementById('cpf_cnpj_Dbanco').value
-                buscaAss(nome, cpf_cnpj, sms, email, cep, endereco, bairro, cnh, tel2, tel3, data_cnh, rg, uf, tipo_conta, banco, agencia, responsavel, conta, cpf_cnpj_dado)
+                cadastraAss(nome, cpf_cnpj, sms, email, sexo, data_nasc, cep, endereco, bairro, cnh, tel2, tel3, data_cnh, rg, uf, tipo_conta, banco, agencia, responsavel, conta, cpf_cnpj_dado)
             }
             else
                 console.log(nome, cpf_cnpj, sexo, sms, email)
         }
 
-        function viaCep(cep) {
-            fetch(`https://viacep.com.br/ws/${cep}/json`)
-                .then(response => {
-                    return response.json()
-                        .then((data) => {
-                            document.getElementById('cidade').value = data.localidade
-                            document.getElementById('bairro').value = data.bairro
-                            document.getElementById('endereco').value = data.logradouro
-                            document.getElementById('uf').value = data.uf
-                        });
-                }).then((data) => {
-                }).catch((err) => { });
+        function cadastraAss(nome, cpf_cnpj, sms, email, sexo, data_nasc, cep, endereco, bairro, cnh, tel2, tel3, data_cnh, rg, uf, tipo_conta, banco, agencia, responsavel, conta, cpf_cnpj_dado) {
+            let lista = [nome, cpf_cnpj, sms, email, sexo, data_nasc, cep, endereco, bairro, cnh, tel2, tel3, data_cnh, rg, uf, tipo_conta, banco, agencia, responsavel, conta, cpf_cnpj_dado]
+            parent.ebfFlowExecute('Novo cadastro de associados - salvar dados', parent.ebfListParamsCreate(lista));
         }
 
-        function alterTab(tab) {
-            let qnt = document.querySelectorAll('.tab-pane').length
-            for (let i = 0; i < qnt; i++) {
-                document.querySelectorAll('.tab-pane')[i].style.display = 'none'
-                if (document.querySelectorAll('.tab-select')[i].classList.contains('act')) {
-                    document.querySelectorAll('.tab-select')[i].classList.remove('act')
-                }
+        /* Buscar associado */
+var assID;
+        function buscaAss(filtro) {
+            if (filtro == null || filtro == undefined) {
+                let valor = document.getElementById('input-busca').value;
+                var retorno = parent.ebfFlowExecute('Novo cadastro de associados - filtrar', parent.ebfListParamsCreate(valor));
             }
-            document.getElementById('btn-salvar').style.display = ''
-            document.querySelectorAll('.tab-pane')[tab].style.display = ''
-            document.querySelectorAll('.tab-select')[tab].classList.add('act')
-            if (tab == 2) {
-                document.getElementById('btn-salvar').style.display = 'none'
+            else {
+                var retorno = parent.ebfFlowExecute('Novo cadastro de associados - filtrar', parent.ebfListParamsCreate(filtro));
+            }
+            if (retorno != null && retorno != undefined) {
+                preencherRetorno(retorno);
+            }
+            else{
+                assID = null;
             }
         }
 
-        function buscaAss(nome, cpf_cnpj, sms, email, cep, endereco, bairro, cnh, tel2, tel3, data_cnh, rg, uf, tipo_conta, banco, agencia, responsavel, conta, cpf_cnpj_dado) {
-            let lista = [nome, cpf_cnpj, sms, email, cep, endereco, bairro, cnh, tel2, tel3, data_cnh, rg, uf, tipo_conta, banco, agencia, responsavel, conta, cpf_cnpj_dado]
-            parent.ebfFlowExecute('Novo cadastro de associados - salvar dados', lista);
+        function obterEndereco_Numero(tipo, valor) {
+            let lista = valor.split(',')
+            /* tipo == 0 Endereço */
+            /* tipo == 1 Numero */
+            return lista[tipo];
+        }
+
+        function preencherSexo(sexo) {
+            if (sexo == 1) {
+                document.getElementById('masc').checked = 1
+            }
+            else if (sexo == 2) {
+                document.getElementById('fem').checked = 1;
+            }
+        }
+
+        /* Caso o retorno do banco não seja nulo ou vazio essa função e chamada passando o retorno como parametro
+        ela pega os dados e preenche os campos */
+
+        function preencherRetorno(lista) {
+            assID = lista[0];
+            document.getElementById('associado').value = lista[1];
+            if (lista[2].length == 14) {
+                document.getElementById('cpf').checked = 1
+            }
+            else if (lista[2].length == 18) {
+                document.getElementById('cnpj').check = 1
+            }
+            document.getElementById('cpf_cnpj').value = lista[2];
+            document.getElementById('endereco').value = obterEndereco_Numero(0, lista[3]);
+            document.getElementById('num').value = obterEndereco_Numero(1, lista[3]);
+            document.getElementById('bairro').value = lista[4];
+            document.getElementById('cidade').value = lista[5];
+            document.getElementById('uf').value = lista[6];
+            document.getElementById('cep').value = lista[7].replace(/(\d{5})(\d{3})/, "$1-$2");
+            document.getElementById('sms').value = lista[8];
+            document.getElementById('tel2').value = lista[9];
+            document.getElementById('tel3').value = lista[10];
+            document.getElementById('email').value = lista[11];
+            preencherSexo(lista[12]);
+            document.getElementById('data_nasc').value = lista[13];
+            document.getElementById('cnh').value = lista[14];
+            document.getElementById('data_cnh').value = lista[15];
+            document.getElementById('rg').value = formataRG(lista[16]);
+            document.getElementById('sConta').value = lista[17];
+            document.getElementById('banco').value = lista[18];
+            document.getElementById('agencia').value = lista[19];
+            document.getElementById('conta').value = lista[20];
+            document.getElementById('responsavel').value = lista[21];
+            document.getElementById('associacao').value = lista[22];
+            document.getElementById('usuario').value = lista[23];
+            document.getElementById('cpf_cnpj_Dbanco').value = lista[24];
+            if (lista[24].length == 14) {
+                document.getElementById('cpf_dado').checked = 1
+            }
+            else if (lista[24].length == 18) {
+                document.getElementById('cnpj_dado').check = 1
+            }
         }
 
     </script>
