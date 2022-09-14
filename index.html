@@ -282,8 +282,7 @@
                                 <label for="">RG</label>
                             </div>
                             <div class="div-input form-floating mb-3 col-6" style="display: inline-block;">
-                                <input class="form-control" type="text" readonly id="usuario"
-                                    placeholder="usuário">
+                                <input class="form-control" type="text" readonly id="usuario" placeholder="usuário">
                                 <label for="">Usuário</label>
                             </div>
                         </div>
@@ -363,7 +362,7 @@
                                         <th class="th_table align-center">Oficina</th>
                                         <th class="th_table align-center">Nome</th>
                                 </thead>
-                                <tbody class="scrollable">
+                                <tbody class="scrollable" id="table_body">
 
                                 </tbody>
                             </table>
@@ -637,7 +636,7 @@
         }
 
         /* Buscar associado */
-var assID;
+        var assID;
         function buscaAss(filtro) {
             if (filtro == null || filtro == undefined) {
                 let valor = document.getElementById('input-busca').value;
@@ -649,16 +648,20 @@ var assID;
             if (retorno != null && retorno != undefined) {
                 preencherRetorno(retorno);
             }
-            else{
+            else {
                 assID = null;
             }
         }
 
         function obterEndereco_Numero(tipo, valor) {
-            let lista = valor.split(',')
-            /* tipo == 0 Endereço */
-            /* tipo == 1 Numero */
-            return lista[tipo];
+            if (valor != null && valor != undefined) {
+                let lista = valor.split(',');
+                /* tipo == 0 Endereço */
+                /* tipo == 1 Numero */
+                return lista[tipo];
+            }
+            else
+                return null
         }
 
         function preencherSexo(sexo) {
