@@ -369,6 +369,9 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-1" style="position: absolute; bottom: 8px; right: 150px;">
+                    <button class="btn btn-danger" id="btn-salvar">Deletar</button>
+                </div>
                 <div class="col-1" style="position: absolute; bottom: 8px; right: -12px;">
                     <button class="btn btn-success" id="btn-salvar">Salvar</button>
                 </div>
@@ -632,7 +635,11 @@
 
         function cadastraAss(nome, cpf_cnpj, sms, email, sexo, data_nasc, cep, endereco, bairro, cnh, tel2, tel3, data_cnh, rg, uf, tipo_conta, banco, agencia, responsavel, conta, cpf_cnpj_dado) {
             let lista = [nome, cpf_cnpj, sms, email, sexo, data_nasc, cep, endereco, bairro, cnh, tel2, tel3, data_cnh, rg, uf, tipo_conta, banco, agencia, responsavel, conta, cpf_cnpj_dado]
-            parent.ebfFlowExecute('Novo cadastro de associados - salvar dados', parent.ebfListParamsCreate(lista));
+            parent.ebfFlowExecute('Novo cadastro de associados - salvar dados', parent.ebfListParamsCreate(lista, assID));
+        }
+
+        function apagarAss() {
+            parent.ebfFlowExecute('', parent.ebfListParamsCreate(assID));
         }
 
         /* Buscar associado */
